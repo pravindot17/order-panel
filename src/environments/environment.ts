@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   pollingIntervalTime: 10000,
-  orderAPI: 'http://localhost:3001/health',
-  paymentAPI: 'http://localhost:3002/health',
+  orderAPI: 'http://localhost:3001',
+  paymentAPI: 'http://localhost:3002',
 };
 
 /*

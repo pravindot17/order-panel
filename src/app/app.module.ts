@@ -13,24 +13,56 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { LayoutModule } from '@angular/cdk/layout';
 import { HttpClientModule } from '@angular/common/http';
+import { OrdersComponent } from './orders/orders.component';
+import { OrderAddComponent } from './order-add/order-add.component';
+import { OrderDetailComponent } from './order-detail/order-detail.component';
+
+import { FormsModule } from '@angular/forms';
+
+import {
+  MatInputModule,
+  MatPaginatorModule,
+  MatProgressSpinnerModule,
+  MatSortModule,
+  MatTableModule,
+  MatFormFieldModule,
+  MatAutocompleteModule,
+  MatSelectModule,
+  MatDatepickerModule,
+  MatNativeDateModule
+} from '@angular/material';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent
+    DashboardComponent,
+    OrdersComponent,
+    OrderAddComponent,
+    OrderDetailComponent
   ],
   imports: [
     HttpClientModule,
     HttpModule,
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     BrowserAnimationsModule,
     MatGridListModule,
     MatCardModule,
     MatMenuModule,
     MatIconModule,
     MatButtonModule,
-    LayoutModule
+    LayoutModule,
+    MatInputModule,
+    MatPaginatorModule,
+    MatProgressSpinnerModule,
+    MatSortModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatAutocompleteModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]

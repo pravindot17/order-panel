@@ -4,13 +4,15 @@
     <mat-card class="create-order-card">
       <mat-card-content class="create-order-card-content">
         <div>
-          View Orders
+          <a mat-flat-button color="primary" [routerLink]="['/orders']">
+            View Orders
+          </a>
         </div>
       </mat-card-content>
     </mat-card>
   </mat-grid-list>
-  <mat-grid-list cols="2" rowHeight="350px">
-    <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
+  <mat-grid-list cols="2" color="primary" rowHeight="350px">
+    <mat-grid-tile color="primary" *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
       <mat-card class="dashboard-card">
         <mat-card-header>
           <mat-card-title>

@@ -12,14 +12,14 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   getOrderStatus() {
-    return this.http.get(environment.orderAPI)
+    return this.http.get(`${environment.orderAPI}/health`)
       .pipe(
         map(res => res)
       );
   }
 
   getPaymentStatus() {
-    return this.http.get(environment.paymentAPI)
+    return this.http.get(`${environment.paymentAPI}/health`)
       .pipe(
         map(res => res)
       );
