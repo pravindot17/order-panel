@@ -11,7 +11,8 @@
 }
 
 .example-full-width {
-  width: 50%;
+  width: 40%;
+  margin: 15px;
 }
 
 .example-full-width:nth-last-child() {

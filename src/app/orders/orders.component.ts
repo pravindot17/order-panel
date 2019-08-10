@@ -10,7 +10,7 @@ import { MatTableDataSource } from '@angular/material';
 })
 export class OrdersComponent implements OnInit {
   displayedColumns: string[] = ['orderId', 'name', 'email', 'orderState', 'createdAt'];
-  data = new MatTableDataSource();
+  dataSource = new MatTableDataSource();
   isLoadingResults = true;
 
   constructor(private order: OrderService) { }
@@ -18,9 +18,8 @@ export class OrdersComponent implements OnInit {
   ngOnInit() {
     this.order.getOrders()
       .subscribe(res => {
-        this.data = new MatTableDataSource<Order>(res);
-        console.log(this.data);
-        // setTimeout(() => this.data.paginator = this.paginator);
+        this.dataSource = new MatTableDataSource<Order>(res);
+        console.log(this.dataSource);
         this.isLoadingResults = false;
       }, err => {
         console.log(err);

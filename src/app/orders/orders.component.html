@@ -8,8 +8,8 @@
     </a>
   </div>
   <div class="">
-    <table mat-table [dataSource]="data" class="mat-elevation-z8" matSort matSortActive="createdAt" matSortDisableClear
-      matSortDirection="desc">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort matSortActive="createdAt"
+      matSortDisableClear matSortDirection="desc" *ngIf="dataSource.data.length > 0">
       <ng-container matColumnDef="orderId">
         <th mat-header-cell *matHeaderCellDef>Order Id</th>
         <td mat-cell *matCellDef="let row">{{row.orderId}}</td>
@@ -35,7 +35,7 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/order-details/', row.orderId]">
       </tr>
     </table>
-    <div *ngIf="data.length === 0">No records found</div>
-
+    <mat-card-title class="no-record-found" *ngIf="dataSource.data.length === 0">No orders found! Go ahead and create
+      one</mat-card-title>
   </div>
 </div>
