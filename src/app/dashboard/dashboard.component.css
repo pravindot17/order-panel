@@ -8,6 +8,7 @@
   left: 15px;
   right: 15px;
   bottom: 15px;
+  border-top: 1px solid #d8d1d1;
 }
 
 .more-button {
@@ -18,4 +19,9 @@
 
 .dashboard-card-content {
   text-align: center;
+}
+
+.card-title-group{
+  text-align: center;
+  font-weight: 500;
 }

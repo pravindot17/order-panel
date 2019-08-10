@@ -7,8 +7,8 @@
       Add order
     </a>
   </div>
-  <div class="mat-elevation-z8">
-    <table mat-table [dataSource]="data" class="example-table" matSort matSortActive="createdAt" matSortDisableClear
+  <div class="">
+    <table mat-table [dataSource]="data" class="mat-elevation-z8" matSort matSortActive="createdAt" matSortDisableClear
       matSortDirection="desc">
       <ng-container matColumnDef="orderId">
         <th mat-header-cell *matHeaderCellDef>Order Id</th>
@@ -32,7 +32,10 @@
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/order-details/', row.orderId]"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/order-details/', row.orderId]">
+      </tr>
     </table>
+    <div *ngIf="data.length === 0">No records found</div>
+
   </div>
 </div>

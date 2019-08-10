@@ -2,3 +2,23 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.nav-ele a {
+  text-decoration: none;
+  color: white;
+  display: block;
+}
+
+.nav-ele a:hover, .nav-ele a:active{
+  color: #4e74f0;
+}
+
+mat-toolbar{
+  border-radius: 3px;
+}
+
+@media(max-width: 959px){
+  mat-toolbar{
+      border-radius: 0px;
+  }
+}

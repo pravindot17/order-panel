@@ -62,4 +62,14 @@ export class DashboardComponent implements OnInit {
         ),
       ).subscribe(res => { this.pollingData.payment = true; });
   }
+
+  getHealthSrc(health) {
+    if (health) { return 'assets/images/activeHealth.png'; }
+    return 'assets/images/inactiveHealth.png';
+  }
+
+  getHealthMessage(health) {
+    if (health) { return 'It\'s Healthy!'; }
+    return 'It\'s Unhealthy!';
+  }
 }

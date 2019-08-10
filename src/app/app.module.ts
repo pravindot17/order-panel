@@ -29,7 +29,10 @@ import {
   MatAutocompleteModule,
   MatSelectModule,
   MatDatepickerModule,
-  MatNativeDateModule
+  MatNativeDateModule,
+  MatToolbarModule,
+  MatTabsModule,
+  MatSidenavModule
 } from '@angular/material';
 
 @NgModule({
@@ -63,7 +66,10 @@ import {
     MatAutocompleteModule,
     MatSelectModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatToolbarModule,
+    MatTabsModule,
+    MatSidenavModule
   ],
   providers: [],
   bootstrap: [AppComponent]
