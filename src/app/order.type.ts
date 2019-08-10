@@ -6,5 +6,4 @@ export class Order {
     name: string,
     amount: number
   }];
-  orderState?: string;
 }
