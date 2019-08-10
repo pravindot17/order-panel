@@ -17,7 +17,7 @@ import { OrdersComponent } from './orders/orders.component';
 import { OrderAddComponent } from './order-add/order-add.component';
 import { OrderDetailComponent } from './order-detail/order-detail.component';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {
   MatInputModule,
@@ -46,6 +46,7 @@ import {
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     MatGridListModule,
     MatCardModule,

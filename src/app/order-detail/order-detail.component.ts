@@ -14,6 +14,7 @@ export class OrderDetailComponent implements OnInit {
   isLoadingResults = true;
   displayedProductColumns: string[] = ['position', 'name', 'amount'];
   displayedHistoryColumns: string[] = ['state', 'createdAt'];
+
   constructor(private route: ActivatedRoute, private api: OrderService, private router: Router) { }
 
   ngOnInit() {

@@ -28,3 +28,7 @@ table {
 .mat-card-header-text{
   margin: 0;
 }
+
+.mat-card-subtitle {
+  color: #524b4b;
+}

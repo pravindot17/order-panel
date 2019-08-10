@@ -1,1 +1,52 @@
-<p>order-add works!</p>
+<div class="example-container mat-elevation-z8">
+  <div class="example-loading-shade" *ngIf="isLoadingResults">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  </div>
+  <div class="button-row">
+    <a mat-flat-button color="primary" [routerLink]="['/orders']">
+      Back to Orders
+    </a>
+  </div>
+  <mat-card class="example-card">
+    <form [formGroup]="orderForm" (ngSubmit)="onFormSubmit(orderForm.value)">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Customer Name" formControlName="name" [errorStateMatcher]="matcher">
+        <mat-error>
+          <span *ngIf="!orderForm.get('name').valid && orderForm.get('name').touched">Please enter
+            Customer
+            Name</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Customer Email" formControlName="email" [errorStateMatcher]="matcher">
+        <mat-error>
+          <span *ngIf="!orderForm.get('email').valid && orderForm.get('email').touched">Please enter valid email</span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <textarea matInput placeholder="Address" formControlName="address" [errorStateMatcher]="matcher"></textarea>
+        <mat-error>
+          <span *ngIf="!orderForm.get('address').valid && orderForm.get('address').touched">Please enter
+            Address</span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Select Products</mat-label>
+        <mat-select formControlName="products" multiple>
+          <mat-option *ngFor="let product of staticProducts" [value]="product">{{product.name}} - INR{{product.amount}}
+          </mat-option>
+        </mat-select>
+        <mat-error>
+          <span *ngIf="!orderForm.get('products').valid && orderForm.get('products').touched">Please select
+            products</span>
+        </mat-error>
+      </mat-form-field>
+
+      <div class="button-row">
+        <button type="submit" [disabled]="!orderForm.valid" mat-flat-button color="primary">Save</button>
+      </div>
+    </form>
+  </mat-card>
+</div>
