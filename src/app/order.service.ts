@@ -18,12 +18,8 @@ export class OrderService {
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-
-      // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
-
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
+      throw error;
     };
   }
 
@@ -49,6 +45,13 @@ export class OrderService {
     return this.http.post<Order>(`${environment.orderAPI}/order`, orderData, httpOptions).pipe(
       tap((order: Order) => console.log(`added order is ${order}`)),
       catchError(this.handleError<Order>('addJob'))
+    );
+  }
+
+  cancelOrder(orderId): Observable<object> {
+    return this.http.put(`${environment.orderAPI}/order/cancel`, { orderId }, httpOptions).pipe(
+      tap((status) => console.log(`cancelled order is ${status}`)),
+      catchError(this.handleError('cancelOrder', null))
     );
   }
 }

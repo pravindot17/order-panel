@@ -6,6 +6,9 @@
     <a mat-flat-button color="primary" [routerLink]="['/orders']">
       Back to Orders
     </a>
+    <a mat-flat-button color="primary" (click)="cancelOrder(order.orderId)">
+      Cancel Order
+    </a>
   </div>
   <mat-card class="example-card">
     <mat-card-header>

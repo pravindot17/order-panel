@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Order } from '../order.type';
 import { OrderService } from '../order.service';
 
@@ -14,8 +14,9 @@ export class OrderDetailComponent implements OnInit {
   isLoadingResults = true;
   displayedProductColumns: string[] = ['position', 'name', 'amount'];
   displayedHistoryColumns: string[] = ['state', 'createdAt'];
+  errorMsg = '';
 
-  constructor(private route: ActivatedRoute, private api: OrderService, private router: Router) { }
+  constructor(private route: ActivatedRoute, private api: OrderService) { }
 
   ngOnInit() {
     this.getOrderDetails(this.route.snapshot.params.id);
@@ -28,5 +29,14 @@ export class OrderDetailComponent implements OnInit {
         console.log(this.order);
         this.isLoadingResults = false;
       });
+  }
+
+  cancelOrder(orderId) {
+    this.api.cancelOrder(orderId).subscribe(data => {
+      console.log('received sdata', data);
+    }, error => {
+      console.log('receved eror', error);
+      if (error && error.error) { this.errorMsg = error.error.message; }
+    });
   }
 }
