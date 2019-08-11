@@ -34,6 +34,8 @@ import {
   MatTabsModule,
   MatSidenavModule
 } from '@angular/material';
+import { AlertComponent } from './alert/alert.component';
+import { AlertService } from './alert/alert.service';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ import {
     DashboardComponent,
     OrdersComponent,
     OrderAddComponent,
-    OrderDetailComponent
+    OrderDetailComponent,
+    AlertComponent
   ],
   imports: [
     HttpClientModule,
@@ -71,7 +74,7 @@ import {
     MatTabsModule,
     MatSidenavModule
   ],
-  providers: [],
+  providers: [AlertService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

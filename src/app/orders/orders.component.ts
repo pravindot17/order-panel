@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { OrderService } from '../order.service';
 import { Order } from '../order.type';
 import { MatTableDataSource } from '@angular/material';
+import { AlertService } from '../alert/alert.service';
 
 @Component({
   selector: 'app-orders',
@@ -13,16 +14,16 @@ export class OrdersComponent implements OnInit {
   dataSource = new MatTableDataSource();
   isLoadingResults = true;
 
-  constructor(private order: OrderService) { }
+  constructor(private order: OrderService, private alert: AlertService) { }
 
   ngOnInit() {
     this.order.getOrders()
       .subscribe(res => {
         this.dataSource = new MatTableDataSource<Order>(res);
-        console.log(this.dataSource);
         this.isLoadingResults = false;
       }, err => {
         console.log(err);
+        this.alert.error('Unable to fetch orders list');
         this.isLoadingResults = false;
       });
   }

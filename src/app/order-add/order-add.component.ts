@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { OrderService } from '../order.service';
 import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { AlertService } from '../alert/alert.service';
 
 @Component({
   selector: 'app-order-add',
@@ -25,7 +26,7 @@ export class OrderAddComponent implements OnInit {
     { name: 'Timex S90', amount: 1750 },
   ];
 
-  constructor(private router: Router, private api: OrderService, private formBuilder: FormBuilder) { }
+  constructor(private router: Router, private api: OrderService, private alert: AlertService, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.orderForm = this.formBuilder.group({
@@ -44,9 +45,11 @@ export class OrderAddComponent implements OnInit {
       .subscribe(res => {
         const id = res.orderId;
         this.isLoadingResults = false;
+        this.alert.success('Your order has been placed succesfully');
         this.router.navigate(['/order-details', id]);
       }, (err) => {
         console.log('Failed adding order', err);
+        this.alert.error('Unable to place your order due to server error');
         this.isLoadingResults = false;
       });
   }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Order } from '../order.type';
 import { OrderService } from '../order.service';
+import { AlertService } from '../alert/alert.service';
 
 @Component({
   selector: 'app-order-detail',
@@ -16,7 +17,7 @@ export class OrderDetailComponent implements OnInit {
   displayedHistoryColumns: string[] = ['state', 'createdAt'];
   errorMsg = '';
 
-  constructor(private route: ActivatedRoute, private api: OrderService) { }
+  constructor(private route: ActivatedRoute, private api: OrderService, private alert: AlertService) { }
 
   ngOnInit() {
     this.getOrderDetails(this.route.snapshot.params.id);
@@ -26,17 +27,15 @@ export class OrderDetailComponent implements OnInit {
     this.api.getOrder(id)
       .subscribe(data => {
         this.order = data;
-        console.log(this.order);
         this.isLoadingResults = false;
       });
   }
 
   cancelOrder(orderId) {
     this.api.cancelOrder(orderId).subscribe(data => {
-      console.log('received sdata', data);
+      this.alert.error('Your order has been cancelled successfully');
     }, error => {
-      console.log('receved eror', error);
-      if (error && error.error) { this.errorMsg = error.error.message; }
+      if (error && error.error) { this.alert.error(error.error.message); }
     });
   }
 }

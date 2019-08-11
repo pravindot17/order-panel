@@ -40,8 +40,6 @@ export class OrderService {
   }
 
   addOrder(orderData): Observable<Order> {
-    console.log('payload', JSON.stringify(orderData));
-
     return this.http.post<Order>(`${environment.orderAPI}/order`, orderData, httpOptions).pipe(
       tap((order: Order) => console.log(`added order is ${order}`)),
       catchError(this.handleError<Order>('addJob'))
