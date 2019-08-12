@@ -28,13 +28,19 @@ export class OrderDetailComponent implements OnInit {
       .subscribe(data => {
         this.order = data;
         this.isLoadingResults = false;
+      }, err => {
+        console.log('inside error', err);
+        this.isLoadingResults = false;
+        this.alert.error('Unable to fetch order details');
       });
   }
 
   cancelOrder(orderId) {
     this.api.cancelOrder(orderId).subscribe(data => {
+      this.isLoadingResults = false;
       this.alert.error('Your order has been cancelled successfully');
     }, error => {
+      this.isLoadingResults = false;
       if (error && error.error) { this.alert.error(error.error.message); }
     });
   }
